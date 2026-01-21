@@ -1,0 +1,17 @@
+*{
+    box-sizing: border-box;
+    margin: 10;
+    padding: 0;
+}
+.desc {
+    height: 40px;          
+    line-height: 20px;
+    overflow: hidden;
+  }
+  
+  .category {
+    height: 40px;
+    line-height: 20px;
+    overflow: hidden;
+  }
+  

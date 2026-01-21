@@ -17,7 +17,7 @@ export const Register = () => {
       <Form style={{ width: 500 }} onFinish={submit} layout="vertical">
         <Form.Item
           label="Name"
-          name="user"
+          name="username"
           rules={[{ required: true, message: "Please input your username!" }]}
         >
           <Input />

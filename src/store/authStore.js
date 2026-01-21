@@ -3,13 +3,11 @@ import { api } from "../api/api";
 
 export const useAuthStore = create((set) => ({
   user: null,
-  acessToken: null,
+  accessToken: null,
   refreshToken: null,
   isLoading: false,
   error: null,
   isAuth: false,
-  profile: null,
-
   getProfile: async () => {
     const res = await api.get("/profile");
     set({ profile: res.data });
@@ -18,17 +16,17 @@ export const useAuthStore = create((set) => ({
   login: async (data) => {
     try {
       set({ isLoading: true, error: null });
-      const res = await api.post("/auth/login", data);
+      const res = await api.post("auth/login", data);
 
       set({
         user: res.data.user,
-        acessToken: res.data.accessToken,
-        refreshToken: res.data.refreshToken,
+        accessToken: res.data.token.accessToken,
+        refreshToken: res.data.token.refreshToken,
         isAuth: true,
       });
 
-      localStorage.setItem("acessToken", res.data.accessToken);
-      localStorage.setItem("refreshToken", res.data.refreshToken);
+      localStorage.setItem("acessToken", res.data.token.accessToken);
+      localStorage.setItem("refreshToken", res.data.token.refreshToken);
     } catch (e) {
       set({ error: e.response?.data?.message || "Login failed" });
     } finally {

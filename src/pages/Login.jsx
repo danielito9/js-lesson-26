@@ -3,12 +3,12 @@ import { useAuthStore } from "../store/authStore";
 import { Button, Form, Input } from "antd";
 
 export const Login = () => {
-  const { login, isLoading, error, isAuth } = useAuthStore();
+  const { login, isLoading, error } = useAuthStore();
   const navigate = useNavigate();
 
   const submit = async (value) => {
     await login(value);
-    if (isAuth) navigate("/");
+    navigate("/");
   };
 
   return (
